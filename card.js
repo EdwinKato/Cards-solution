@@ -34,3 +34,23 @@ const testArray = [1,2,3,4,'A','B'];
 //Test move cards
 console.log(`Cards: ${testArray}`)
 console.log(`New Cards: ${moveA(testArray)}`);
+
+
+// The card after the last index determines the number of times all the cards will move
+function solutionFour(cards) {
+    const indexOfA = cards.indexOf('A');
+    const indexOfB = cards.indexOf('B');
+    const lastIndex = Math.max((indexOfA, indexOfB));
+    if(!(lastIndex === cards.length - 1)) {
+        const bound = cards[lastIndex + 1]
+        for(let i = 0; i < bound; i++) {
+            arrayRotate(cards);
+        }
+    }
+    return cards;
+}
+
+//Test solution four
+const newTestArray = [1,2,3,4,'A','B', '2'];
+console.log(`Solution four test cards: ${newTestArray}`)
+console.log(`Cards: ${solutionFour(newTestArray)}`);
